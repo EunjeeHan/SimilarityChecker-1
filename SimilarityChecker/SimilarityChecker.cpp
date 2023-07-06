@@ -50,8 +50,8 @@ public:
 		int totalCnt = getTotalCnt(foundStr1, foundStr2);
 
 		if (sameCnt == totalCnt) return 40;
-		if (sameCnt == 0) return 0;
-		return -1;
+		if (sameCnt == 0) return 0;		
+		return ((double)sameCnt / totalCnt) * 40;
 	}
 private:
 };

@@ -54,3 +54,9 @@ TEST_F(CheckerFixture, DiffAlphabetTest) {
 	EXPECT_EQ(0, simChar.checkAlphabet("A", "BB"));
 }
 
+TEST_F(CheckerFixture, PartialSameAlphabetTest) {
+	SimilarChar simChar;
+	EXPECT_EQ(10, simChar.checkAlphabet("AAABB", "AACD"));
+	EXPECT_EQ(20, simChar.checkAlphabet("AA", "AAE"));
+}
+
