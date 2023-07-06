@@ -1,0 +1,3 @@
+## Similarity Checker
+---
+TDD KATA
