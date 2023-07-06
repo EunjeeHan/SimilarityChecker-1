@@ -20,17 +20,15 @@ public:
 };
 
 TEST_F(CheckerFixture, ThrowExceptionIfNotAlphabet) {
-	assertInvalidArgument(string("1A"), string("AB"));
+	assertInvalidArgument("1A", "AB");
 }
 
 TEST_F(CheckerFixture, SameLengthTest) {
-	vector<string> input = { "ASD", "DSA" };
-	EXPECT_EQ(60, checker.checkLength(input[0], input[1]));
+	EXPECT_EQ(60, checker.checkLength("ASD", "DSA"));
 }
 
 TEST_F(CheckerFixture, BiggerThanTest) {
-	vector<string> input = { "A", "BB" };
-	EXPECT_EQ(0, checker.checkLength(input[0], input[1]));
+	EXPECT_EQ(0, checker.checkLength("A", "BB"));
 }
 
 TEST_F(CheckerFixture, FirstIsBiggerAndLessThanTwiceTest) {	

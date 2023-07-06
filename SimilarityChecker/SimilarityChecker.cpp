@@ -20,13 +20,19 @@ public:
 		}
 	}
 
-	bool isBiggerThanTwice(const string& str1, const string& str2)
+	bool isMoreThanTwice(const string& str1, const string& str2)
 	{
 		if (str1.length() >= str2.length() * 2)
 		{
 			return true;
 		}
 		return false;
+	}
+
+	int getPartialPoint(const string& str1, const string& str2)
+	{
+		int gap = str1.length() - str2.length();				
+		return (1 - (double)gap / str2.length()) * 60;
 	}
 
 	int checkLength(const string& str1, const string& str2)
@@ -40,20 +46,16 @@ public:
 
 		if (str1.length() > str2.length())
 		{
-			if (isBiggerThanTwice(str1, str2))
+			if (isMoreThanTwice(str1, str2))
 			{
 				return 0;
 			}
-			else
-			{
-				int gap = str1.length() - str2.length();				
-				return (1 - (double)gap / str2.length()) * 60;
-			}
+			return getPartialPoint(str1, str2);
 		}
 
 		if (str1.length() < str2.length())
 		{
-			if (isBiggerThanTwice(str2, str1))
+			if (isMoreThanTwice(str2, str1))
 			{
 				return 0;
 			}
