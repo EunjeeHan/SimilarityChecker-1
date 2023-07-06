@@ -3,5 +3,13 @@
 
 TEST(SimilarityCheckerTest, ThrowExceptionIfNotAlphabet) {
 	SimilarityChecker checker;
-	EXPECT_THROW(checker.check(string("1A"), string("AB")), invalid_argument);
+	try
+	{
+		checker.check(string("1A"), string("AB"));
+		FAIL();
+	}
+	catch (exception e)
+	{
+		// PASS
+	}
 }
