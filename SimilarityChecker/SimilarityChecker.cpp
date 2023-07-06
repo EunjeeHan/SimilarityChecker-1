@@ -39,6 +39,31 @@ public:
 		return totalCnt;
 	}
 
+	bool isSameChar(int foundStr1[26], int foundStr2[26])
+	{
+		int sameCnt = getSameCnt(foundStr1, foundStr2);
+		int totalCnt = getTotalCnt(foundStr1, foundStr2);
+
+		if (sameCnt == totalCnt) return true;
+		return false;
+	}
+
+	bool isDiffChar(int foundStr1[26], int foundStr2[26])
+	{
+		int sameCnt = getSameCnt(foundStr1, foundStr2);
+
+		if (sameCnt == 0) return true;
+		return false;
+	}
+
+	int getPartialPoint(int foundStr1[26], int foundStr2[26])
+	{
+		int sameCnt = getSameCnt(foundStr1, foundStr2);
+		int totalCnt = getTotalCnt(foundStr1, foundStr2);
+
+		return ((double)sameCnt / totalCnt) * 40;
+	}
+
 	int checkAlphabet(const string& str1, const string& str2)
 	{
 		int foundStr1[26] = { 0, };
@@ -46,14 +71,14 @@ public:
 		checkFoundAlphabet(str1, foundStr1);		
 		checkFoundAlphabet(str2, foundStr2);
 
-		int sameCnt = getSameCnt(foundStr1, foundStr2);
-		int totalCnt = getTotalCnt(foundStr1, foundStr2);
+		if (isSameChar(foundStr1, foundStr2)) return MAX_CHAR_POINT;
+		if (isDiffChar(foundStr1, foundStr2)) return MIN_CHAR_POINT;
 
-		if (sameCnt == totalCnt) return 40;
-		if (sameCnt == 0) return 0;		
-		return ((double)sameCnt / totalCnt) * 40;
+		return getPartialPoint(foundStr1, foundStr2);
 	}
 private:
+	const int MAX_CHAR_POINT = 40;
+	const int MIN_CHAR_POINT = 0;
 };
 
 class SimilarityChecker
