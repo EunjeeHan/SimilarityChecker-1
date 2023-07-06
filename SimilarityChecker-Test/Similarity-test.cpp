@@ -45,5 +45,6 @@ TEST_F(CheckerFixture, LessThanTwiceAndSecondIsLongerTest) {
 TEST_F(CheckerFixture, SameAlphabetTest) {
 	SimilarChar simChar;
 	EXPECT_EQ(40, simChar.checkAlphabet("AAABB", "BA"));
+	EXPECT_EQ(40, simChar.checkAlphabet("ASD", "DSA"));
 }
 

@@ -4,25 +4,18 @@ using namespace std;
 class SimilarChar
 {
 public:
-	int checkAlphabet(const string& str1, const string& str2)
+	void checkFoundAlphabet(const string& str, int(& foundStr)[26])
 	{
-		int totalCnt = 0;
+		for (char ch : str)
+		{
+			int index = ch - 'A';
+			foundStr[index] = 1;
+		}
+	}
+
+	int getSameCnt(int foundStr1[26], int foundStr2[26])
+	{
 		int sameCnt = 0;
-
-		int foundStr1[26] = { 0, };
-		for (char ch : str1)
-		{
-			int index = ch - 'A';
-			foundStr1[index] = 1;
-		}
-
-		int foundStr2[26] = { 0, };
-		for (char ch : str2)
-		{
-			int index = ch - 'A';
-			foundStr2[index] = 1;
-		}
-
 		for (int i = 0; i < 26; i++)
 		{
 			if (foundStr1[i] && foundStr2[i])
@@ -30,7 +23,12 @@ public:
 				sameCnt++;
 			}
 		}
+		return sameCnt;
+	}
 
+	int getTotalCnt(int foundStr1[26], int foundStr2[26])
+	{
+		int totalCnt = 0;
 		for (int i = 0; i < 26; i++)
 		{
 			if (foundStr1[i] || foundStr2[i])
@@ -38,6 +36,18 @@ public:
 				totalCnt++;
 			}
 		}
+		return totalCnt;
+	}
+
+	int checkAlphabet(const string& str1, const string& str2)
+	{
+		int foundStr1[26] = { 0, };
+		int foundStr2[26] = { 0, };
+		checkFoundAlphabet(str1, foundStr1);		
+		checkFoundAlphabet(str1, foundStr2);
+
+		int sameCnt = getSameCnt(foundStr1, foundStr2);
+		int totalCnt = getTotalCnt(foundStr1, foundStr2);
 
 		if (sameCnt == totalCnt) return 40;
 		return 0;
