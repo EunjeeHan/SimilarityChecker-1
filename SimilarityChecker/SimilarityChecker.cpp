@@ -44,13 +44,14 @@ public:
 		int foundStr1[26] = { 0, };
 		int foundStr2[26] = { 0, };
 		checkFoundAlphabet(str1, foundStr1);		
-		checkFoundAlphabet(str1, foundStr2);
+		checkFoundAlphabet(str2, foundStr2);
 
 		int sameCnt = getSameCnt(foundStr1, foundStr2);
 		int totalCnt = getTotalCnt(foundStr1, foundStr2);
 
 		if (sameCnt == totalCnt) return 40;
-		return 0;
+		if (sameCnt == 0) return 0;
+		return -1;
 	}
 private:
 };
