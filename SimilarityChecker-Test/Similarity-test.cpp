@@ -27,3 +27,8 @@ TEST_F(CheckerFixture, SameLengthTest) {
 	vector<string> input = { "ASD", "DSA" };
 	EXPECT_EQ(60, checker.checkLength(input[0], input[1]));
 }
+
+TEST_F(CheckerFixture, DoubleLengthTest) {
+	vector<string> input = { "A", "BB" };
+	EXPECT_EQ(0, checker.checkLength(input[0], input[1]));
+}

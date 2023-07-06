@@ -28,6 +28,21 @@ public:
 		{
 			return 60;
 		}
-		return 0;
+		else if (str1.length() > str2.length())
+		{
+			if (str1.length() >= str2.length() * 2)
+			{
+				return 0;
+			}			
+		}
+		else if (str1.length() < str2.length())
+		{
+			if (str2.length() >= str1.length() * 2)
+			{
+				return 0;
+			}
+		}
+
+		return -1;
 	}
 };
