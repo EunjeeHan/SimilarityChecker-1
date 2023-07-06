@@ -28,7 +28,12 @@ TEST_F(CheckerFixture, SameLengthTest) {
 	EXPECT_EQ(60, checker.checkLength(input[0], input[1]));
 }
 
-TEST_F(CheckerFixture, DoubleLengthTest) {
+TEST_F(CheckerFixture, BiggerThanTest) {
 	vector<string> input = { "A", "BB" };
 	EXPECT_EQ(0, checker.checkLength(input[0], input[1]));
+}
+
+TEST_F(CheckerFixture, FirstIsBiggerAndLessThanTwiceTest) {	
+	EXPECT_EQ(20, checker.checkLength("AAABB", "BAA"));
+	EXPECT_EQ(45, checker.checkLength("AAABB", "BAAB"));	
 }

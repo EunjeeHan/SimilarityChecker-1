@@ -44,6 +44,11 @@ public:
 			{
 				return 0;
 			}
+			else
+			{
+				int gap = str1.length() - str2.length();				
+				return (1 - (double)gap / str2.length()) * 60;
+			}
 		}
 
 		if (str1.length() < str2.length())
