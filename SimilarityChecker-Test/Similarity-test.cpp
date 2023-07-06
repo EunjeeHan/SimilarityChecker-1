@@ -9,7 +9,7 @@ public:
 	{
 		try
 		{
-			checker.check(str1, str2);
+			checker.checkLength(str1, str2);
 			FAIL();
 		}
 		catch (exception e)
@@ -25,7 +25,5 @@ TEST_F(CheckerFixture, ThrowExceptionIfNotAlphabet) {
 
 TEST_F(CheckerFixture, SameLengthTest) {
 	vector<string> input = { "ASD", "DSA" };
-
-	int ret = checker.check(input[0], input[1]);
-	EXPECT_EQ(60, ret);	
+	EXPECT_EQ(60, checker.checkLength(input[0], input[1]));
 }

@@ -20,7 +20,7 @@ public:
 		}
 	}
 
-	int check(const string& str1, const string& str2)
+	int checkLength(const string& str1, const string& str2)
 	{
 		assertInvalidArgument(str1, str2);
 
@@ -28,5 +28,6 @@ public:
 		{
 			return 60;
 		}
+		return 0;
 	}
 };
