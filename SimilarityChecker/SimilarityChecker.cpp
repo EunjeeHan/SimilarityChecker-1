@@ -20,6 +20,15 @@ public:
 		}
 	}
 
+	bool isBiggerThanTwice(const string& str1, const string& str2)
+	{
+		if (str1.length() >= str2.length() * 2)
+		{
+			return true;
+		}
+		return false;
+	}
+
 	int checkLength(const string& str1, const string& str2)
 	{
 		assertInvalidArgument(str1, str2);
@@ -28,16 +37,18 @@ public:
 		{
 			return 60;
 		}
-		else if (str1.length() > str2.length())
+
+		if (str1.length() > str2.length())
 		{
-			if (str1.length() >= str2.length() * 2)
+			if (isBiggerThanTwice(str1, str2))
 			{
 				return 0;
-			}			
+			}
 		}
-		else if (str1.length() < str2.length())
+
+		if (str1.length() < str2.length())
 		{
-			if (str2.length() >= str1.length() * 2)
+			if (isBiggerThanTwice(str2, str1))
 			{
 				return 0;
 			}
