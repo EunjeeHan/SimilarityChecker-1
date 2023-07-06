@@ -1,15 +1,24 @@
 #include "pch.h"
 #include "../SimilarityChecker/SimilarityChecker.cpp"
 
-TEST(SimilarityCheckerTest, ThrowExceptionIfNotAlphabet) {
+class CheckerFixture : public testing::Test
+{
+public:
 	SimilarityChecker checker;
-	try
+	void assertInvalidArgument(string str1, string str2)
 	{
-		checker.check(string("1A"), string("AB"));
-		FAIL();
+		try
+		{
+			checker.check(str1, str2);
+			FAIL();
+		}
+		catch (exception e)
+		{
+			// PASS
+		}
 	}
-	catch (exception e)
-	{
-		// PASS
-	}
+};
+
+TEST_F(CheckerFixture, ThrowExceptionIfNotAlphabet) {
+	assertInvalidArgument(string("1A"), string("AB"));
 }
