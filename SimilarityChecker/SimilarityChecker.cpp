@@ -23,7 +23,7 @@ public:
 	int getSamePoint(const string& str1, const string& str2)
 	{
 		int gap = str1.length() - str2.length();				
-		return (1 - (double)gap / str2.length()) * 60;
+		return (1 - (double)gap / str2.length()) * MAX_LENGTH_POINT;
 	}
 	
 	bool isEqualAndLongerForFirstString(const string& str1, const string& str2)
@@ -42,4 +42,6 @@ public:
 		
 		return getSamePoint(str2, str1);
 	}
+private:
+	const int MAX_LENGTH_POINT = 60;
 };
