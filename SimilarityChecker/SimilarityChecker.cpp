@@ -20,8 +20,13 @@ public:
 		}
 	}
 
-	void check(const string& str1, const string& str2)
+	int check(const string& str1, const string& str2)
 	{
 		assertInvalidArgument(str1, str2);
+
+		if (str1.length() == str2.length())
+		{
+			return 60;
+		}
 	}
 };

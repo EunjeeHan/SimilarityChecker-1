@@ -22,3 +22,10 @@ public:
 TEST_F(CheckerFixture, ThrowExceptionIfNotAlphabet) {
 	assertInvalidArgument(string("1A"), string("AB"));
 }
+
+TEST_F(CheckerFixture, SameLengthTest) {
+	vector<string> input = { "ASD", "DSA" };
+
+	int ret = checker.check(input[0], input[1]);
+	EXPECT_EQ(60, ret);	
+}
