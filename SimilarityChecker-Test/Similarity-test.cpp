@@ -27,11 +27,17 @@ TEST_F(CheckerFixture, SameLengthTest) {
 	EXPECT_EQ(60, checker.checkLength("ASD", "DSA"));
 }
 
-TEST_F(CheckerFixture, BiggerThanTest) {
+TEST_F(CheckerFixture, MoreThanTwiceTest) {
 	EXPECT_EQ(0, checker.checkLength("A", "BB"));
 }
 
-TEST_F(CheckerFixture, FirstIsBiggerAndLessThanTwiceTest) {	
+TEST_F(CheckerFixture, LessThanTwiceAndFirstIsLongerTest) {
 	EXPECT_EQ(20, checker.checkLength("AAABB", "BAA"));
 	EXPECT_EQ(45, checker.checkLength("AAABB", "BAAB"));	
+}
+
+TEST_F(CheckerFixture, LessThanTwiceAndSecondIsLongerTest) {
+	EXPECT_EQ(20, checker.checkLength("BAA", "AAABB"));
+	EXPECT_EQ(45, checker.checkLength("BAAB", "AAABB"));
+	EXPECT_EQ(30, checker.checkLength("AA", "AAE"));
 }

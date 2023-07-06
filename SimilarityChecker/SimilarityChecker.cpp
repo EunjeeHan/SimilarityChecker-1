@@ -20,7 +20,7 @@ public:
 		}
 	}
 
-	bool isMoreThanTwice(const string& str1, const string& str2)
+	bool isLongerThanTwice(const string& str1, const string& str2)
 	{
 		if (str1.length() >= str2.length() * 2)
 		{
@@ -46,7 +46,7 @@ public:
 
 		if (str1.length() > str2.length())
 		{
-			if (isMoreThanTwice(str1, str2))
+			if (isLongerThanTwice(str1, str2))
 			{
 				return 0;
 			}
@@ -55,10 +55,11 @@ public:
 
 		if (str1.length() < str2.length())
 		{
-			if (isMoreThanTwice(str2, str1))
+			if (isLongerThanTwice(str2, str1))
 			{
 				return 0;
 			}
+			return getPartialPoint(str2, str1);
 		}
 
 		return -1;
