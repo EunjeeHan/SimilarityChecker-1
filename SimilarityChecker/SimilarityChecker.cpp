@@ -20,48 +20,26 @@ public:
 		}
 	}
 
-	bool isLongerThanTwice(const string& str1, const string& str2)
-	{
-		if (str1.length() >= str2.length() * 2)
-		{
-			return true;
-		}
-		return false;
-	}
-
-	int getPartialPoint(const string& str1, const string& str2)
+	int getSamePoint(const string& str1, const string& str2)
 	{
 		int gap = str1.length() - str2.length();				
 		return (1 - (double)gap / str2.length()) * 60;
+	}
+	
+	bool isEqualAndLongerForFirstString(const string& str1, const string& str2)
+	{
+		return str1.length() >= str2.length();
 	}
 
 	int checkLength(const string& str1, const string& str2)
 	{
 		assertInvalidArgument(str1, str2);
-
-		if (str1.length() == str2.length())
+				
+		if (isEqualAndLongerForFirstString(str1, str2))
 		{
-			return 60;
+			return getSamePoint(str1, str2);
 		}
-
-		if (str1.length() > str2.length())
-		{
-			if (isLongerThanTwice(str1, str2))
-			{
-				return 0;
-			}
-			return getPartialPoint(str1, str2);
-		}
-
-		if (str1.length() < str2.length())
-		{
-			if (isLongerThanTwice(str2, str1))
-			{
-				return 0;
-			}
-			return getPartialPoint(str2, str1);
-		}
-
-		return -1;
+		
+		return getSamePoint(str2, str1);
 	}
 };
